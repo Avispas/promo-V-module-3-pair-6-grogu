@@ -3,7 +3,9 @@ import "../images/grogu.webp";
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
+import GameStatus from "./GameStatus";
 import { useState } from 'react';
+import RestartButton from "./RestartButton";
 
 function App() {  
 
@@ -37,10 +39,10 @@ function App() {
 
   const resetGame = () => {
     groguPosition = 0;
-    setCookies(cookies = ['🍪', '🍪','🍪']);
-    setEggs(eggs = ['🥚', '🥚','🥚']);
-    setFrogs(frogs = ['🐸', '🐸','🐸']);
-    setGameStatus(gameStatus = 'En curso');
+    setCookies(['🍪', '🍪','🍪']);
+    setEggs(['🥚', '🥚','🥚']);
+    setFrogs(['🐸', '🐸','🐸']);
+    setGameStatus('En curso');
   }
 
 
@@ -48,14 +50,9 @@ function App() {
     <div className="page">
     <Header/>
     <main className="page">
-     <Board />
-
-      <section>
-        <button className="dice" onClick={rollDice}>Lanzar Dado</button>
-        <Dice />
-        <div className="game-status">{gameStatus}</div>
-      </section>
-
+      <Board />      
+      <Dice dice={rollDice} />
+      <GameStatus />
       <section className="goods-container">
         <div className="goods-item">🍪</div>
         <div className="goods-item">🍪</div>
@@ -71,9 +68,7 @@ function App() {
         <div className="goods-item">🐸</div>
         <div className="goods-item">🐸</div>
       </section>
-      <section>
-        <button className="restart-button" onClick={resetGame}>Reiniciar Juego</button>
-      </section>
+      <RestartButton btn={resetGame}/>
     </main>
   </div>
     )  
