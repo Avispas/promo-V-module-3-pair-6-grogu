@@ -1,19 +1,48 @@
-import Grogu from "./Grogu";
+import Grogu from './Grogu';
+import Cell from './Cell';
 
-function Board () {
-    // let [groguPosition, setGroguPosition] = useState(0);
-    // setGroguPosition(groguPosition++);
-    return (
-        <section className="board">
-        <div className="cell"><Grogu /></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-      </section>
-    )
+function Board({groguPosition}) {
+  const renderCells = () => {
+    const cells = [];
+    // for (let i = 0; i < 7; i++) {
+    //   cells.push(<Cell key={i} />);
+    //   if (groguPosition === 0) {
+    //     cells[0].push(<Grogu />)
+    //   }
+    // }
+    for (let i = 0; i < 7; i++) {
+      if (groguPosition === i) {
+        cells.push(
+          <Cell key={i}>
+            <Grogu />
+          </Cell>
+        );
+      } else {
+        cells.push(<Cell key={i} />);
+      }
+    }
+
+    return cells;
+  };
+
+
+  //ChatGPT
+  // function Board({ groguPosition }) {
+  //   const renderCells = () => {
+  //     const cells = [];
+  
+  //     for (let i = 0; i < 7; i++) {
+  //       cells.push(
+  //         <Cell key={i} hasGrogu={groguPosition === i}>
+  //           {groguPosition === i && <Grogu />}
+  //         </Cell>
+  //       );
+  //     }
+  
+  //     return cells;
+  //   };
+
+  return <section className="board">{renderCells()}</section>;
 }
 
-export default Board;  
+export default Board;

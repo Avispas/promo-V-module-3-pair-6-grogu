@@ -10,7 +10,7 @@ import RestartButton from "./RestartButton";
 function App() {  
 
   let [gameStatus, setGameStatus] = useState('En curso');
-  let [groguPosition, setGroguPosition] = useState(0);
+  let [groguPosition, setGroguPosition] = useState(1);
   let [cookies, setCookies] = useState (['🍪', '🍪','🍪']);
   let [eggs, setEggs] = useState (['🥚', '🥚','🥚']);
   let [frogs, setFrogs] = useState (['🐸', '🐸','🐸']);
@@ -20,7 +20,8 @@ function App() {
     const result = Math.ceil(randomNumber*4);
     console.log(result);
     if (result === 4) {
-      setGroguPosition(groguPosition++);
+      setGroguPosition(groguPosition + 1);
+      console.log(groguPosition);
       setGameStatus(gameStatus = 'Grogu ha avanzado una casilla');
     } else if ( result === 1) {
       setCookies(cookies.slice(1));
@@ -50,7 +51,7 @@ function App() {
     <div className="page">
     <Header/>
     <main className="page">
-      <Board />      
+      <Board groguPosition={groguPosition}/>      
       <Dice dice={rollDice} />
       <GameStatus />
       <section className="goods-container">
