@@ -1,6 +1,9 @@
-function GameStatus ({status}) {
+function GameStatus ({gameStatus, name}) {
     return (
-        <div className="game-status">{status}</div>
+        <>
+        <h3>{name}</h3>
+        <div className="game-status">{gameStatus}</div>
+        </>
     )
 }
 export default GameStatus
