@@ -22,7 +22,6 @@ function App() {
     // Comprobación para Grogu ha ganado
     if (groguPosition === 6) {
       setGameStatus('Grogu ha ganado la partida');
-
     }
   
     // Comprobación para Has ganado
@@ -31,11 +30,9 @@ function App() {
     }
   }, [groguPosition, cookies, eggs, frogs]);
   
-  
-  const rollDice = () => {
-    
-    const randomNumber = Math.random();
-    const result = Math.ceil(randomNumber*4);
+  const randomNumber = Math.random();
+  const result = Math.ceil(randomNumber*4);
+  const rollDice = () => {    
     console.log(result);
     if (result === 4) {
       setGroguPosition(groguPosition + 1);
@@ -78,7 +75,7 @@ function App() {
     <Header/>
     <main className="page">
       <Board groguPosition={groguPosition}/>   
-      { frogs.length === 0 && eggs.length === 0 && frogs.length === 0|| groguPosition !== 6 && <Dice dice={rollDice} />}   
+      { cookies.length === 0 && eggs.length === 0 && frogs.length === 0 || groguPosition !== 6 && <Dice dice={rollDice} randomNumber={result}/>}   
       {/* <Dice dice={rollDice} /> */}
       <GameStatus gameStatus={gameStatus} name={name}/>
       <Section mercancia={cookies}/>

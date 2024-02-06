@@ -2,7 +2,7 @@
   import React, { useState } from 'react';
   import "../scss/Dice.scss";
 
-function Dice( {dice}) {
+function Dice( {dice, randomNumber}) {
   const handleDice = () => {
     dice();
     tirarDado();
@@ -10,8 +10,7 @@ function Dice( {dice}) {
   const [resultado, setResultado] = useState(null);
 
   const tirarDado = () => {
-    const numero = Math.ceil(Math.random() * 4);
-    switch (numero) {
+    switch (randomNumber) {
       case 1:
         setResultado(<img src="http://www.lawebdelprogramador.com/usr/147000/147685/527560a9ce32f-dado1.png" alt="Dado 1" />);
         break;
